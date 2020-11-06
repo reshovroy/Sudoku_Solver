@@ -11,7 +11,9 @@ This project consist of mainly experimental exploration of best possible ways to
 (refer to notebook **sudoku.ipynb** for detailed steps)
 ### The detection and solving proceed through the following major steps:
 * converting image to grayscalesdf
+<p>
   <img src="./readme_imgs/color_to_gray.png">
+</p>
 
 * blurring (to remove noise) and adaptive thresholding
   <img src="./readme_imgs/blur_to_threshold.png">
