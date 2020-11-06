@@ -12,31 +12,31 @@ This project consist of mainly experimental exploration of best possible ways to
 ### The detection and solving proceed through the following major steps:
 * converting image to grayscalesdf
 <p>
-  <img src="./readme_imgs/color_to_gray.png">
+  <img src="./readme_imgs/color_to_gray.PNG">
 </p>
 
 * blurring (to remove noise) and adaptive thresholding
-  <img src="./readme_imgs/blur_to_threshold.png">
+  <img src="./readme_imgs/blur_to_threshold.PNG">
 
 * reverting color, trying out opening vs median filter, median giving better results in removing white dots without removing the required detail (digits)
-  <img src="./readme_imgs/opened_vs_median.png">
+  <img src="./readme_imgs/opened_vs_median.PNG">
 
 * detecting largest contour ( assuming user usually focuses on the sudoku) and generate a binary mask, this masks out the required object removing all the other unnecessary details, after that detect corners using Shi Tomasi corner detector
   <p float="left">
-    <img src="./readme_imgs/roi.png" height="190">
-    <img src="./readme_imgs/roi_img.png" height="190">
-    <img src="./readme_imgs/corners.png" height="190">
+    <img src="./readme_imgs/roi.PNG" height="190">
+    <img src="./readme_imgs/roi_img.PNG" height="190">
+    <img src="./readme_imgs/corners.PNG" height="190">
   </p>
 
 * using perspective transform with the 4 corner points to unwrap the image, here we also find the transformation matrix, After that we draw black Hough lines to remove the border lines, this helps in getting cleaner digit imgs
   <p float="left">
-    <img src="./readme_imgs/corners.png" height="190">
-    <img src="./readme_imgs/unwraped.png" height="190">
-    <img src="./readme_imgs/hough_imposed.png" height="190">
+    <img src="./readme_imgs/corners.PNG" height="190">
+    <img src="./readme_imgs/unwraped.PNG" height="190">
+    <img src="./readme_imgs/hough_imposed.PNG" height="190">
   </p>
 
 * we then segment the image into 81 images considering it as a 9x9 matrix
-  <img src="./readme_imgs/img_grid.png">
+  <img src="./readme_imgs/img_grid.PNG">
 
 * we need to feed only digits into the neural net for detection, leaving out noisy cells. To detect this we process each image *(hover over)* and
   
