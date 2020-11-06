@@ -11,12 +11,14 @@ This project consist of mainly experimental exploration of best possible ways to
 (refer to notebook **sudoku.ipynb** for detailed steps)
 ### The detection and solving proceed through the following major steps:
 * converting image to grayscalesdf
-<p>
+<p float="left">
   <img src="./readme_imgs/color_to_gray.PNG">
 </p>
 
 * blurring (to remove noise) and adaptive thresholding
+<p float="left">
   <img src="./readme_imgs/blur_to_threshold.PNG">
+</p>
 
 * reverting color, trying out opening vs median filter, median giving better results in removing white dots without removing the required detail (digits)
   <img src="./readme_imgs/opened_vs_median.PNG">
@@ -36,7 +38,9 @@ This project consist of mainly experimental exploration of best possible ways to
   </p>
 
 * we then segment the image into 81 images considering it as a 9x9 matrix
-  <img src="./readme_imgs/img_grid.PNG">
+  <p float="left">
+    <img src="./readme_imgs/img_grid.PNG">
+  </p
 
 * we need to feed only digits into the neural net for detection, leaving out noisy cells. To detect this we process each image *(hover over)* and
   
@@ -44,21 +48,25 @@ This project consist of mainly experimental exploration of best possible ways to
     2. detect the largest contour object, extract it, center and finally resize it appropriate for the neural net
    
   <p float="left">
-    <img src="./readme_imgs/original_noisy.png" height="190" title="original noisy">
-    <img src="./readme_imgs/number_contour.png" height="190" title="largest contour">
-    <img src="./readme_imgs/final_number.png" height="190" title="final number">
+    <img src="./readme_imgs/original_noisy.PNG" height="190" title="original noisy">
+    <img src="./readme_imgs/number_contour.PNG" height="190" title="largest contour">
+    <img src="./readme_imgs/final_number.PNG" height="190" title="final number">
   </p>
 
 * Our final number grid after processing each image cell
-  <img src="./readme_imgs/processed_grid.png">
-
+  <p float="left">
+    <img src="./readme_imgs/processed_grid.PNG">
+  </p>
+  
 * We feed the non noise images through a CNN to detect the number and create a matrix, to solve this we use a **greedy best first backtracking algorithm**. The basic backtracking algorithm is similar to the N-Queens problem, but targetting the next cell to be searched as the one with the minimum number of possibilities helps to reduce the branching factor thus solving expert level sudokus in under a second *(sudoku_backtrack_greedy.py)*
-  <img src="./readme_imgs/solved.png">
-
+  <p float="left">
+    <img src="./readme_imgs/solved.PNG">
+  </p>
 * We now need to apply the inverse perspective transformation to wrap the image back to its original state, after which we replace the pixels of our original image with the non zero pixels of our solution image
-  <img src="./readme_imgs/output_transformed.png">
-  <img src="./readme_imgs/final_solved.png">
-
+<p float="left">
+  <img src="./readme_imgs/output_transformed.PNG">
+  <img src="./readme_imgs/final_solved.PNG">
+</p>
 
 <br><br>
 ### Training the Neural Network 
